@@ -1,0 +1,53 @@
+.auth-container {
+  mat-card {
+    width: 320px;
+    max-height: calc(100% - 50px);
+    overflow: auto;
+    h1 {
+      margin-bottom: 24px;
+    }
+    .checkbox-section {
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      .empty-div {
+        width: 5px;
+      }
+      p {
+        color: #5b4ffb;
+        cursor: pointer;
+      }
+    }
+    .link {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      color: #5b4ffb;
+      cursor: pointer;
+    }
+  }
+}
+
+// @media only screen and (max-width: 768px) {
+//   mat-card {
+//     width: calc(100% - 150px) !important;
+//   }
+// }
+
+@media only screen and (max-width: 414px) {
+  mat-card {
+    width: calc(100% - 80px) !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  mat-card {
+    width: calc(100% - 40px) !important;
+    .checkbox-section {
+      //   justify-content: center !important;
+      //   flex-direction: column;
+    }
+  }
+}

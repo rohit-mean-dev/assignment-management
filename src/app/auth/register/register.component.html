@@ -1,0 +1,48 @@
+<div class="auth-container">
+    <mat-card>
+        <div>
+            <h1>Create an Account</h1>
+            <form [formGroup]="form">
+                <label>First Name</label>
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Enter your first name</mat-label>
+                    <input formControlName="firstName" matInput placeholder="Joe">
+                    <mat-error *ngIf="form.get('firstName')?.hasError('required')">E-mail required.</mat-error>
+                </mat-form-field>
+                <label>Last Name</label>
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Enter your last name</mat-label>
+                    <input formControlName="lastName" matInput placeholder="Root">
+                    <mat-error *ngIf="form.get('lastName')?.hasError('required')">E-mail required.</mat-error>
+                </mat-form-field>
+                <label>E-mail</label>
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Enter your e-mail</mat-label>
+                    <input formControlName="email" matInput placeholder="joe.root@gmail.com">
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">E-mail required.</mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('apiError')">{{commonService.apiErrors.email}}
+                    </mat-error>
+                </mat-form-field>
+                <label>Password</label>
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Enter your password</mat-label>
+                    <input formControlName="password" matInput placeholder="*******">
+                    <mat-error *ngIf="form.get('password')?.hasError('required')">Password required.</mat-error>
+                    <mat-error *ngIf="form.get('password')?.hasError('apiError')">{{commonService.apiErrors.password}}
+                    </mat-error>
+                </mat-form-field>
+                <label>Confirm Password</label>
+                <mat-form-field class="example-full-width w-100">
+                    <mat-label>Confirm your password</mat-label>
+                    <input formControlName="confirmPassword" matInput placeholder="*******">
+                </mat-form-field>
+                <button type="submit" (click)="register()" mat-raised-button class="w-100"
+                    color="primary">Register</button>
+                <div class="link">
+                    <p [routerLink]="['/auth/login']">Already have an account? Login</p>
+                </div>
+            </form>
+
+        </div>
+    </mat-card>
+</div>
