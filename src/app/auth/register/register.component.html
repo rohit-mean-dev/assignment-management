@@ -4,37 +4,57 @@
             <h1>Create an Account</h1>
             <form [formGroup]="form">
                 <label>First Name</label>
-                <mat-form-field class="example-full-width w-100">
+                <mat-form-field class="example-full-width form-control w-100">
                     <mat-label>Enter your first name</mat-label>
-                    <input formControlName="firstName" matInput placeholder="Joe">
-                    <mat-error *ngIf="form.get('firstName')?.hasError('required')">E-mail required.</mat-error>
+                    <input maxlength="50" appLeftTrimFormControl formControlName="firstName" matInput placeholder="Joe">
+                    <mat-error *ngIf="form.get('firstName')?.hasError('required')">First name required.</mat-error>
+                    <mat-error *ngIf="form.get('firstName')?.hasError('maxLength')">First name length should be less
+                        than 50.</mat-error>
                 </mat-form-field>
                 <label>Last Name</label>
-                <mat-form-field class="example-full-width w-100">
+                <mat-form-field class="example-full-width form-control w-100">
                     <mat-label>Enter your last name</mat-label>
-                    <input formControlName="lastName" matInput placeholder="Root">
-                    <mat-error *ngIf="form.get('lastName')?.hasError('required')">E-mail required.</mat-error>
+                    <input maxlength="50" appLeftTrimFormControl formControlName="lastName" matInput placeholder="Root">
+                    <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last name required.</mat-error>
+                    <mat-error *ngIf="form.get('lastName')?.hasError('maxLength')">Last name length should be less than
+                        50.</mat-error>
                 </mat-form-field>
                 <label>E-mail</label>
-                <mat-form-field class="example-full-width w-100">
+                <mat-form-field class="example-full-width form-control w-100">
                     <mat-label>Enter your e-mail</mat-label>
-                    <input formControlName="email" matInput placeholder="joe.root@gmail.com">
+                    <input appTrimFormControl formControlName="email" matInput placeholder="joe.root@gmail.com">
                     <mat-error *ngIf="form.get('email')?.hasError('required')">E-mail required.</mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">E-mail Invalid.</mat-error>
                     <mat-error *ngIf="form.get('email')?.hasError('apiError')">{{commonService.apiErrors.email}}
                     </mat-error>
                 </mat-form-field>
                 <label>Password</label>
-                <mat-form-field class="example-full-width w-100">
+                <mat-form-field class="example-full-width w-100 form-control">
                     <mat-label>Enter your password</mat-label>
-                    <input formControlName="password" matInput placeholder="*******">
+                    <input maxlength="50" appTrimFormControl [type]="passwordVisible ? 'text':'password'"
+                        autocomplete="new-password" formControlName="password" matInput placeholder="*******">
+                    <mat-icon matSuffix (click)="passwordVisible=!passwordVisible">{{passwordVisible ?
+                        'visibility_off':'visibility'}}</mat-icon>
                     <mat-error *ngIf="form.get('password')?.hasError('required')">Password required.</mat-error>
+                    <mat-error
+                        *ngIf="!form.get('password')?.hasError('maxLength') && form.get('password')?.hasError('pattern')">
+                        Password should contain 1 number, 1 lower-case, 1 upper-case, 1 special character & at-least 8
+                        character long.
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.get('password')?.hasError('maxLength') && !form.get('password')?.hasError('pattern')">
+                        Password length should be less than 50.
+                    </mat-error>
                     <mat-error *ngIf="form.get('password')?.hasError('apiError')">{{commonService.apiErrors.password}}
                     </mat-error>
                 </mat-form-field>
                 <label>Confirm Password</label>
-                <mat-form-field class="example-full-width w-100">
+                <mat-form-field class="example-full-width form-control w-100">
                     <mat-label>Confirm your password</mat-label>
-                    <input formControlName="confirmPassword" matInput placeholder="*******">
+                    <input maxlength="50" [type]="confirmPasswordVisible ? 'text':'password'"
+                        formControlName="confirmPassword" matInput placeholder="*******">
+                    <mat-icon matSuffix (click)="confirmPasswordVisible=!confirmPasswordVisible">
+                        {{confirmPasswordVisible ? 'visibility_off':'visibility'}}</mat-icon>
                 </mat-form-field>
                 <button type="submit" (click)="register()" mat-raised-button class="w-100"
                     color="primary">Register</button>
@@ -42,7 +62,6 @@
                     <p [routerLink]="['/auth/login']">Already have an account? Login</p>
                 </div>
             </form>
-
         </div>
     </mat-card>
 </div>

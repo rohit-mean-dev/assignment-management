@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService, CommonService } from 'src/app/shared';
+import { LoginRequest } from 'src/app/shared/models/auth';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    public commonService: CommonService
+  ) {}
 
   ngOnInit(): void {
     this.makeForm();
@@ -24,7 +29,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      console.log(this.form.value);
+      const body: LoginRequest = this.form.value;
+      this.authService.login(body).subscribe((res: any) => {
+        console.log(res);
+      });
     }
   }
 }

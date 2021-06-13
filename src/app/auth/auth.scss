@@ -29,12 +29,10 @@
     }
   }
 }
-
-// @media only screen and (max-width: 768px) {
-//   mat-card {
-//     width: calc(100% - 150px) !important;
-//   }
-// }
+mat-icon {
+  cursor: pointer;
+  user-select: none;
+}
 
 @media only screen and (max-width: 414px) {
   mat-card {
@@ -45,9 +43,5 @@
 @media only screen and (max-width: 320px) {
   mat-card {
     width: calc(100% - 40px) !important;
-    .checkbox-section {
-      //   justify-content: center !important;
-      //   flex-direction: column;
-    }
   }
 }

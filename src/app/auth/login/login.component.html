@@ -4,13 +4,13 @@
       <h1>Account Login</h1>
       <form [formGroup]="form">
         <label>E-mail</label>
-        <mat-form-field class="example-full-width w-100">
+        <mat-form-field class="example-full-width form-control w-100">
           <mat-label>Enter your e-mail</mat-label>
           <input formControlName="email" matInput placeholder="joe.root@gmail.com">
           <mat-error *ngIf="form.get('email')?.hasError('required')">E-mail required.</mat-error>
         </mat-form-field>
         <label>Password</label>
-        <mat-form-field class="example-full-width w-100">
+        <mat-form-field class="example-full-width form-control w-100">
           <mat-label>Enter your password</mat-label>
           <input formControlName="password" matInput placeholder="*******">
           <mat-error *ngIf="form.get('password')?.hasError('required')">Password required.</mat-error>

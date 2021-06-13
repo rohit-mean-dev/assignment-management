@@ -6,6 +6,7 @@ import { MaterialModule } from '../material/material.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
-  imports: [CommonModule, MaterialModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class AuthModule {}
