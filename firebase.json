@@ -10,7 +10,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      { "source": "/auth/**", "function": "auth" }
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
