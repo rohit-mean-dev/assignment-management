@@ -10,9 +10,7 @@
       "**/node_modules/**"
     ],
     "rewrites": [
-      {
-        "source": "/**", 
-        "dynamicLinks": true}
+      { "source": "/auth/**", "function": "auth" }
     ]
   }
 }
