@@ -1,0 +1,46 @@
+#notfound {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.notfound {
+  max-width: 560px;
+  width: 100%;
+  line-height: 1.1;
+}
+
+notfound h1 {
+  font-family: nunito, sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #151723;
+  text-transform: uppercase;
+}
+.flex {
+  display: flex;
+  align-items: flex-end;
+  img {
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+  }
+}
+.notfound h2 {
+  font-family: nunito, sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+  color: #151723;
+}
+.notfound p {
+  font-family: nunito, sans-serif;
+  color: #999fa5;
+  font-weight: 400;
+}
